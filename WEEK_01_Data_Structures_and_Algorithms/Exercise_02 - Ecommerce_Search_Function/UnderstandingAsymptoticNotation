@@ -1,0 +1,18 @@
+Big O Notation: Big O notation is used to describe the upper limit of an algorithm’s
+                running time as the input size increases.
+                This is associated with time complexity
+                Eg:- O(1), O(n), O(log n), etc
+
+Linear Search
+Best case (O(1)): The target element is found at the beginning of the array.
+Average case (O(n)): The target is somewhere in the middle of the array.
+Worst case (O(n)): The target is at the end or not present in the array.
+
+Binary Search
+Best case (O(1)): The target happens to be at the middle index on the first check.
+Average case (O(log n)): The algorithm reduce down the target over many iterations.
+Worst case (O(log n)): The maximum number of divisions needed to search.
+
+From above analysis we can conclude that binary search is more efficient
+when compared with the linear seacrch algo.
+Because the average case time complexity of binary search is better than linear search.

@@ -1,0 +1,15 @@
+Time Complexity Discussion
+
+The recursive predictSavings method has a time complexity of O(n),where n is the number of months.
+This happens because the function calls itself exactly once for each month,
+creating a chain of 12 function calls for a 12-month prediction.
+If you want to predict 100 months, you get 100 function calls stacked on top of each other.
+
+Optimization to Avoid Excessive Computation
+
+The easiest way to optimize this recursive solution is to convert it to an iterative approach using a simple loop.
+Instead of making multiple function calls that stack up in memory,
+use a for-loop that calculates each month's balance one by one.
+This eliminates the function call overhead and prevents potential stack overflow errors
+for large projection periods. The iterative version still takes O(n) time but uses much less memory
+and runs faster because it doesn't need to manage a stack of function calls.
