@@ -1,0 +1,23 @@
+CREATE TABLE VIP_Customers (
+    customer_id NUMBER,
+    name VARCHAR2(100),
+    balance NUMBER,
+    is_vip CHAR(1) -- 'Y' for TRUE, 'N' for FALSE
+);
+
+INSERT INTO VIP_Customers VALUES (1, 'Harry', 9500, 'N');
+INSERT INTO VIP_Customers VALUES (2, 'Neville', 15000, 'N');
+INSERT INTO VIP_Customers VALUES (3, 'Ron', 12000, 'N');
+INSERT INTO VIP_Customers VALUES (4, 'George', 8000, 'N');
+COMMIT;
+
+BEGIN
+  FOR cust IN (SELECT * FROM VIP_Customers WHERE balance > 10000) LOOP
+    UPDATE VIP_Customers
+    SET is_vip = 'Y'
+    WHERE customer_id = cust.customer_id;
+  END LOOP;
+  COMMIT;
+END;
+
+SELECT * FROM VIP_Customers

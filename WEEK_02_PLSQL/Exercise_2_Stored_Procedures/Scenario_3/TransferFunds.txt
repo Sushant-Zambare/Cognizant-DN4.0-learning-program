@@ -1,0 +1,41 @@
+CREATE TABLE accounts (
+    account_id NUMBER PRIMARY KEY,
+    customer_name VARCHAR2(100),
+    balance NUMBER
+);
+
+INSERT INTO accounts VALUES (1, 'Amit', 10000);
+INSERT INTO accounts VALUES (2, 'Riya', 8000);
+INSERT INTO accounts VALUES (3, 'Jay', 5000);
+COMMIT;
+
+CREATE OR REPLACE PROCEDURE TransferFunds (
+  from_account_id IN NUMBER,
+  to_account_id IN NUMBER,
+  amount IN NUMBER
+) AS
+  from_balance NUMBER;
+BEGIN
+  SELECT balance INTO from_balance
+  FROM accounts
+  WHERE account_id = from_account_id;
+
+  IF from_balance < amount THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Insufficient balance.');
+  END IF;
+
+  UPDATE accounts
+  SET balance = balance - amount
+  WHERE account_id = from_account_id;
+
+  UPDATE accounts
+  SET balance = balance + amount
+  WHERE account_id = to_account_id;
+END;
+/
+
+BEGIN
+  TransferFunds(1, 2, 2000);
+END;
+
+SELECT * FROM accounts;

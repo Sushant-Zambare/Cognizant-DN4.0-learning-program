@@ -1,0 +1,22 @@
+CREATE TABLE customers (
+    customer_id NUMBER PRIMARY KEY,
+    name VARCHAR2(50),
+    age NUMBER,
+    loan_interest_rate NUMBER
+);
+
+INSERT INTO customers VALUES (1, 'Harry', 65, 8.5);
+INSERT INTO customers VALUES (2, 'Ron', 45, 9.0);
+INSERT INTO customers VALUES (3, 'Neville', 70, 7.5);
+COMMIT;
+
+BEGIN
+  FOR customer IN (SELECT * FROM customers WHERE age > 60) LOOP
+    UPDATE customers
+    SET loan_interest_rate = loan_interest_rate - 1
+    WHERE customer_id = customer.customer_id;
+  END LOOP;
+  COMMIT;
+END;
+
+SELECT * FROM customers;

@@ -1,0 +1,22 @@
+CREATE TABLE savings_accounts (
+    account_id NUMBER PRIMARY KEY,
+    customer_name VARCHAR2(100),
+    balance NUMBER
+);
+
+INSERT INTO savings_accounts VALUES (1, 'Amit', 10000);
+INSERT INTO savings_accounts VALUES (2, 'Priya', 15000);
+INSERT INTO savings_accounts VALUES (3, 'Ravi', 8000);
+COMMIT;
+
+CREATE OR REPLACE PROCEDURE ProcessMonthlyInterest AS
+BEGIN
+  UPDATE savings_accounts
+  SET balance = balance + (balance * 0.01);
+END;
+
+BEGIN
+  ProcessMonthlyInterest;
+END;
+
+SELECT * FROM savings_accounts;
