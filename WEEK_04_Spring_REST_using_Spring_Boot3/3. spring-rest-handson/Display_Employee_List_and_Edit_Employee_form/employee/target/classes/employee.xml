@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="skill1" class="java.lang.String">
+        <constructor-arg value="Java"/>
+    </bean>
+    <bean id="skill2" class="java.lang.String">
+        <constructor-arg value="Angular"/>
+    </bean>
+    <bean id="skill3" class="java.lang.String">
+        <constructor-arg value="Spring"/>
+    </bean>
+
+    <bean id="dept1" class="com.cognizant.employee.model.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="HR"/>
+    </bean>
+    <bean id="dept2" class="com.cognizant.employee.model.Department">
+        <property name="id" value="2"/>
+        <property name="name" value="IT"/>
+    </bean>
+
+    <bean id="emp1" class="com.cognizant.employee.model.Employee">
+        <property name="id" value="101"/>
+        <property name="name" value="Sushant"/>
+        <property name="department" ref="dept1"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill1"/>
+                <ref bean="skill2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="emp2" class="com.cognizant.employee.model.Employee">
+        <property name="id" value="102"/>
+        <property name="name" value="Yash"/>
+        <property name="department" ref="dept2"/>
+        <property name="skills">
+            <list>
+                <ref bean="skill2"/>
+                <ref bean="skill3"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="employeeList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="emp1"/>
+                <ref bean="emp2"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="departmentList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="dept1"/>
+                <ref bean="dept2"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
