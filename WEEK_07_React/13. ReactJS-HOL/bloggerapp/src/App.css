@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 50px;
+}
+
+.st2, .v1, .mystyle1 {
+  border-left: 5px solid green;
+  padding-left: 20px;
+  min-height: 300px;
+}
