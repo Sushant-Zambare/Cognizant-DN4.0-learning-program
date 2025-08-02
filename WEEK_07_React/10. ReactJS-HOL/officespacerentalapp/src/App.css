@@ -1,0 +1,19 @@
+.textRed {
+  color: red;
+  font-weight: bold;
+}
+
+.textGreen {
+  color: green;
+  font-weight: bold;
+}
+
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  
+}
+.card{
+  display: flex;
+  flex-direction: row;
+}
